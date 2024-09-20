@@ -1,0 +1,35 @@
+<resources>
+    <string name="cyclone">Cyclone</string>
+    <string name="open_github">Open github</string>
+    <string name="run">Run</string>
+    <string name="stop">Stop</string>
+    <string name="theme">Theme</string>
+    <string name="decorative_creativity">Декоративное творчество</string>
+    <string name="choreographic_creativity">Хореографическое творчество</string>
+    <string name="sport_direction">Спортивное направление</string>
+    <string name="singing_direction">Вокальное направление</string>
+    <string name="art_creativity">Изобразительное творчество</string>
+    <string name="music_creativity">Музыкальное творчество</string>
+    <string name="ecology_and_countries">Экология и краеведение</string>
+    <string name="it">IT-технологии</string>
+    <string name="foreign_languages">Иностранные языки</string>
+    <string name="intellectual_creativity">Интеллектуальное творчество</string>
+    <string name="classes_for_preschoolers">Занятия для дошкольников</string>
+    <string name="technical_creativity">Техничесническое творчество</string>
+    <string name="try_again">Попробовать снова</string>
+    <string name="empty_result">Ничего не найдено</string>
+    <string name="center_number">+375 17 360 03 35</string>
+    <string name="center_address">53.88062549446942, 27.538570308877663</string>
+    <string name="center_website">http://oktcvr.minsk.edu.by/</string>
+    <string name="center_youtube_link">https://www.youtube.com/channel/UCELloWoD76hMPixNeF_YiCw/featured</string>
+    <string name="center_instagram">https://www.instagram.com/vetraz_official</string>
+    <string name="contacts">Контакты</string>
+    <string name="contact_us">Свяжитесь с нами</string>
+    <string name="main_center_address">Адрес главного офиса : г.Минск, ул.Чкалова, 1/4</string>
+    <string name="follow_us">Следите за нами:</string>
+    <string name="website">Сайт</string>
+    <string name="instagram">Instagram</string>
+    <string name="subscribe">Записаться</string>
+
+
+</resources>
