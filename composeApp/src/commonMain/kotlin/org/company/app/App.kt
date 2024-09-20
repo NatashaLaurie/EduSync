@@ -74,3 +74,6 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
     )
 }
 
+internal expect fun openUrl(url: String?)
+internal expect fun makeCall(number: String?)
+internal expect fun openMap(coordinates: String?)
