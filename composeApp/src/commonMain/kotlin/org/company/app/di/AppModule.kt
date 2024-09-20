@@ -35,6 +35,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
         modules(
             repositoryModule,
             ktorModule,
+            sqlDelightModule,
             mapperModule,
             dispatcherModule,
             platformModule()
@@ -58,6 +59,10 @@ val ktorModule = module {
             }
         }
     }
+}
+
+val sqlDelightModule = module {
+    single { Database(get()) }
 }
 
 val dispatcherModule = module {
