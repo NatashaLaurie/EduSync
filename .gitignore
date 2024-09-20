@@ -23,3 +23,4 @@ Pods/
 xcschememanagement.plist
 *.xcbkptlist
 /kotlin-js-store/yarn.lock
+/composeApp/src/jsMain/resources/index.html
