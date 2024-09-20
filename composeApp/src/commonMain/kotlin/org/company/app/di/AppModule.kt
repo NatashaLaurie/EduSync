@@ -14,11 +14,13 @@ import org.company.app.db.Database
 import org.company.app.domain.CourseRefresher
 import org.company.app.domain.CoursesRepository
 import org.company.app.domain.use_cases.GetCoursesByCategoryUseCase
+import org.company.app.domain.use_cases.GetCoursesFavoritesUseCase
 import org.company.app.domain.use_cases.IsCourseFavoriteUseCase
 import org.company.app.domain.use_cases.SwitchCourseFavoriteUseCase
 import org.company.app.presentation.ui.features.categories.CategoriesViewModel
 import org.company.app.presentation.ui.features.course_detail.CourseDetailsViewModel
 import org.company.app.presentation.ui.features.courses_list.CoursesViewModel
+import org.company.app.presentation.ui.features.saved_courses.SavedCoursesViewModel
 import org.company.app.repository.CacheDataRepository
 import org.company.app.repository.CoursesRepositoryImpl
 import org.company.app.repository.RemoteDataRepository
@@ -49,12 +51,14 @@ val refreshModule = module {
 
 val viewModelModule = module {
     factory { CategoriesViewModel() }
+    factory { SavedCoursesViewModel(get()) }
     factory { params -> CoursesViewModel(get(), params.get()) }
     factory { params -> CourseDetailsViewModel(get(), get(), params.get()) }
 }
 
 val useCasesModule: Module = module {
     factory { GetCoursesByCategoryUseCase(get(), get()) }
+    factory { GetCoursesFavoritesUseCase(get(), get()) }
     factory { IsCourseFavoriteUseCase(get(), get()) }
     factory { SwitchCourseFavoriteUseCase(get(), get()) }
 }
