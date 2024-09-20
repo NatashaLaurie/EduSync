@@ -45,6 +45,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
 val repositoryModule = module {
     single<RemoteDataRepository> { RemoteDataImpl(get(), get(), BuildConfig.API_KEY) }
     single<CacheDataRepository> { CacheDataRepositoryImpl(get()) }
+    single<CoursesRepository> { CoursesRepositoryImpl(get(), get()) }
 }
 
 val ktorModule = module {
