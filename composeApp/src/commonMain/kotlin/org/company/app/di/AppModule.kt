@@ -13,19 +13,11 @@ import org.company.app.data.remote.mapper.ApiModelMapper
 import org.company.app.db.Database
 import org.company.app.domain.CourseRefresher
 import org.company.app.domain.CoursesRepository
-import org.company.app.domain.use_cases.GetCoursesByCategoryUseCase
-import org.company.app.domain.use_cases.GetCoursesFavoritesUseCase
-import org.company.app.domain.use_cases.IsCourseFavoriteUseCase
-import org.company.app.domain.use_cases.SwitchCourseFavoriteUseCase
 import org.company.app.presentation.ui.features.categories.CategoriesViewModel
-import org.company.app.presentation.ui.features.course_detail.CourseDetailsViewModel
-import org.company.app.presentation.ui.features.courses.CoursesViewModel
-import org.company.app.presentation.ui.features.saved_courses.SavedCoursesViewModel
 import org.company.app.repository.CacheDataRepository
 import org.company.app.repository.CoursesRepositoryImpl
 import org.company.app.repository.RemoteDataRepository
 import org.koin.core.context.startKoin
-import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
@@ -33,7 +25,9 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(
+            viewModelModule,
             repositoryModule,
+            refreshModule,
             ktorModule,
             sqlDelightModule,
             mapperModule,
@@ -41,6 +35,14 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
             platformModule()
         )
     }
+
+val refreshModule = module {
+    single { CourseRefresher(get()) }
+}
+
+val viewModelModule = module {
+    factory { CategoriesViewModel() }
+}
 
 val repositoryModule = module {
     single<RemoteDataRepository> { RemoteDataImpl(get(), get(), BuildConfig.API_KEY) }
