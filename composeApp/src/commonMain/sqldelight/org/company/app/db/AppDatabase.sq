@@ -1,0 +1,63 @@
+import kotlin.collections.List;
+import org.company.app.domain.model.Schedule;
+
+CREATE TABLE CachedCourses (
+    id TEXT NOT NULL PRIMARY KEY,
+    category TEXT NOT NULL,
+    department TEXT NOT NULL,
+    contactPhone TEXT NOT NULL,
+    teacherName TEXT NOT NULL,
+    courseName TEXT NOT NULL,
+    description TEXT NOT NULL,
+    imageUrl TEXT NOT NULL,
+    paymentTerm TEXT NOT NULL,
+    studentsAgeFrom INTEGER NOT NULL,
+    studentsAgeTo INTEGER NOT NULL,
+    schedule TEXT AS List<Schedule> NOT NULL,
+    program TEXT NOT NULL,
+    programDuration TEXT NOT NULL,
+    recruitingIsOpen INTEGER NOT NULL,
+    address TEXT NOT NULL,
+    locationContactPhone TEXT NOT NULL,
+    roomNumber TEXT NOT NULL,
+    isFavorite INTEGER DEFAULT 0 NOT NULL
+);
+
+insertCourse:
+INSERT OR REPLACE INTO CachedCourses(id,category, department, contactPhone, courseName,
+description, imageUrl, paymentTerm, teacherName,
+studentsAgeFrom, studentsAgeTo, schedule, program,
+programDuration,recruitingIsOpen, address, locationContactPhone, roomNumber, isFavorite)
+VALUES (?,?,?,?,?,?,?,?,?,?,
+?,?,?,?,?,?,?,?,?);
+
+
+selectCachedCoursesByCategory:
+SELECT * FROM CachedCourses WHERE category = :category;
+
+selectCachedCourses:
+SELECT * FROM CachedCourses;
+
+selectOneById:
+SELECT * FROM CachedCourses WHERE id = :id;
+
+selectAllFavorites:
+SELECT * FROM CachedCourses WHERE isFavorite != 0;
+
+selectCourseFavoriteById:
+-- SELECT * FROM CharacterFavorite WHERE id = ?;
+SELECT EXISTS(SELECT 1 FROM CachedCourses WHERE id = ? AND isFavorite = ? LIMIT 1);
+
+updateIsFavorite:
+UPDATE CachedCourses SET isFavorite = :isFavorite WHERE id = :id;
+
+search:
+SELECT * FROM CachedCourses
+WHERE courseName LIKE ('% ' || :name)
+OR description LIKE ('% ' || :name);
+
+searchFiltered:
+SELECT * FROM CachedCourses
+WHERE category LIKE ('% ' || :category)
+AND paymentTerm LIKE (:paymentTerm || ' %')
+AND studentsAgeFrom > :studentsAgeFrom;
